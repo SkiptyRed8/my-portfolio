@@ -52,6 +52,9 @@ body {
     width: 100%;
     margin: 0;
     padding: 0;
+    background-color: #0D0D0D;
+    color: #FFFFFF;
+    line-height: 1.5;
 }
 
 /*Home section*/
@@ -134,9 +137,14 @@ nav ul li a {
     transition: 1s ease;
 }
 
-nav ul li a:hover {
+nav ul li a:hover,
+nav ul li a.active {
    border-bottom: 2px solid #FFDD00;
    padding-bottom: 10px;
+}
+
+nav ul li a.active {
+   color: #FFE607;
 }
 
 .hero {
@@ -530,59 +538,6 @@ nav ul li a:hover {
     color: #FFFFFF;
  }
 
- .send-message form{
-    border: 1px solid #FFE607;
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    padding-top: 15px;
-    padding-bottom: 40px;
-    padding-left: 15px;
-    padding-right: 15px;
-    border-radius: 5px;
-    width: 450px;
- }
-
- .send-message form input, textarea {
-    background-color: transparent;
-    border: 1px solid #FFFFFF;
-    border-radius: 5px;
-    padding: 10px;
-    color:#FFFFFF;
- }
-
- .send-message form label, input, button {
-    height: 25px;
- }
-
- .send-message form input{
-    width: 75%;
- }
-
-
- .send-message button {
-   background-color: transparent;
-   border: 1px solid #FFFFFF;
-   border-radius: 5px;
-   color: #FFDD00;
- }
-
- .your-name {
-   display: flex;
-   gap: 20px;
- }
- 
- .your-email {
-   display: flex;
-   gap: 20px;
- }
-
- .your-message {
-   display: flex;
-   flex-direction: column;
-   gap: 20px;
- }
-
 
  .contact-info, .socials {
    border: 1px solid #FFE607;
@@ -640,9 +595,6 @@ nav ul li a:hover {
    transform: scale(1.1);
  }
 
- textarea {
-   height: 150px;
- }
 
 
 
@@ -682,6 +634,379 @@ nav ul li a:hover {
 
  
 
+
+
+/* =========================================================
+   SHARED COMPONENTS (buttons, forms, alerts)
+   ========================================================= */
+
+/* Buttons */
+.btn-gold,
+.btn-outline {
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   gap: 8px;
+   min-height: 42px;
+   padding: 10px 28px;
+   border-radius: 5px;
+   font-family: inherit;
+   font-size: 15px;
+   font-weight: 500;
+   text-decoration: none;
+   cursor: pointer;
+   transition: transform 0.3s ease, filter 0.3s ease, background-color 0.3s ease;
+}
+
+.btn-gold {
+   background-image: linear-gradient(to bottom, #CEBD27, #A89A1F, #9D911D, #685F13);
+   color: #0D0D0D;
+   border: none;
+}
+
+.btn-outline {
+   background-color: transparent;
+   color: #FFDD00;
+   border: 1px solid #FFDD00;
+}
+
+.btn-gold:hover,
+.btn-outline:hover {
+   transform: scale(1.05);
+   filter: brightness(1.1);
+}
+
+.btn-outline:hover {
+   background-color: rgba(255, 221, 0, 0.1);
+}
+
+.btn-gold:focus-visible,
+.btn-outline:focus-visible,
+.link-button:focus-visible {
+   outline: 2px solid #FFE607;
+   outline-offset: 3px;
+}
+
+.link-button {
+   background: none;
+   border: none;
+   padding: 0;
+   color: #B6A04B;
+   font-family: inherit;
+   font-size: 14px;
+   text-decoration: underline;
+   cursor: pointer;
+}
+
+.link-button:hover {
+   color: #FFE607;
+}
+
+/* Forms */
+.field {
+   display: flex;
+   flex-direction: column;
+   gap: 8px;
+}
+
+.field label {
+   color: #FFFFFF;
+   font-size: 15px;
+}
+
+.field input,
+.field textarea {
+   width: 100%;
+   background-color: rgba(255, 255, 255, 0.04);
+   border: 1px solid #919191;
+   border-radius: 5px;
+   padding: 12px;
+   color: #FFFFFF;
+   font-family: inherit;
+   font-size: 15px;
+   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.field textarea {
+   min-height: 150px;
+   resize: vertical;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+   color: #8A8A8A;
+}
+
+.field input:focus,
+.field textarea:focus {
+   outline: none;
+   border-color: #FFE607;
+   box-shadow: 0 0 0 3px rgba(255, 230, 7, 0.2);
+}
+
+.form-intro {
+   color: #C7C7C7;
+}
+
+/* Alerts */
+.alert {
+   border-radius: 5px;
+   padding: 12px 16px;
+   font-size: 14px;
+}
+
+.alert p {
+   margin: 0;
+}
+
+.alert p + p {
+   margin-top: 4px;
+}
+
+.alert-success {
+   background-color: rgba(46, 160, 67, 0.15);
+   border: 1px solid #3FB950;
+}
+
+.alert-success p {
+   color: #7EE787;
+}
+
+.alert-error {
+   background-color: rgba(248, 81, 73, 0.12);
+   border: 1px solid #F85149;
+}
+
+.alert-error p {
+   color: #FFA198;
+}
+
+
+/* =========================================================
+   HOME PAGE ADDITIONS
+   ========================================================= */
+.hero-texts .welcome {
+   color: #B6A04B;
+   letter-spacing: 3px;
+   text-transform: uppercase;
+   font-size: 14px;
+   margin-bottom: 12px;
+}
+
+.contact-cta {
+   max-width: 560px;
+   margin: 20px auto 0;
+   padding: 30px;
+   border: 1px solid #FFE607;
+   border-radius: 5px;
+   text-align: center;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 20px;
+}
+
+
+/* =========================================================
+   CONTACT PAGE
+   ========================================================= */
+.contact-page {
+   min-height: calc(100vh - 80px);
+   padding-top: 60px;
+}
+
+.contact-page .content-contact {
+   margin-top: 0;
+}
+
+.contact-page .contact-socials {
+   padding: 0;
+   margin-top: 0;
+}
+
+.send-message {
+   width: 450px;
+   max-width: 100%;
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+}
+
+.send-message form {
+   border: 1px solid #FFE607;
+   border-radius: 5px;
+   padding: 25px;
+   display: flex;
+   flex-direction: column;
+   gap: 22px;
+   width: 100%;
+}
+
+.send-message form.inline-form {
+   border: none;
+   padding: 0;
+   gap: 0;
+}
+
+.send-message form .btn-gold {
+   align-self: flex-start;
+}
+
+.welcome-box {
+   background-color: rgba(45, 57, 81, 0.5);
+   border-left: 4px solid #FFE607;
+   border-radius: 5px;
+   padding: 20px 25px;
+   display: flex;
+   flex-direction: column;
+   gap: 8px;
+}
+
+#contact .welcome-box h2 {
+   color: #FFFFFF;
+   opacity: 1;
+   font-size: 22px;
+}
+
+
+/* =========================================================
+   ADMIN PANEL
+   ========================================================= */
+.admin-section {
+   min-height: calc(100vh - 80px);
+   padding: 80px 50px;
+   background-image: linear-gradient(to bottom, #0D0D0D, #1B1F2A);
+}
+
+.admin-section h1 {
+   color: #FFFFFF;
+}
+
+.admin-section h1 span {
+   color: #FFE607;
+}
+
+/* Login */
+.admin-card {
+   max-width: 420px;
+   margin: 0 auto;
+   padding: 35px 30px;
+   background-color: #1C2433;
+   border: 1px solid #FFE607;
+   border-radius: 5px;
+   display: flex;
+   flex-direction: column;
+   gap: 18px;
+}
+
+.admin-card h1 {
+   text-align: center;
+}
+
+.admin-card .form-intro {
+   text-align: center;
+}
+
+.admin-card form {
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+}
+
+/* Dashboard */
+.dashboard-head {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   gap: 20px;
+   flex-wrap: wrap;
+   max-width: 1200px;
+   margin: 0 auto 25px;
+}
+
+.message-count {
+   max-width: 1200px;
+   margin: 0 auto 15px;
+   color: #B6A04B;
+}
+
+.empty-state {
+   max-width: 1200px;
+   margin: 0 auto;
+   padding: 40px;
+   border: 1px dashed #919191;
+   border-radius: 5px;
+   text-align: center;
+}
+
+.empty-state p {
+   color: #C7C7C7;
+}
+
+.admin-section .alert {
+   max-width: 1200px;
+   margin: 0 auto 20px;
+}
+
+.table-wrap {
+   max-width: 1200px;
+   margin: 0 auto;
+   overflow-x: auto;
+   border: 1px solid #3A4357;
+   border-radius: 5px;
+}
+
+.messages-table {
+   width: 100%;
+   border-collapse: collapse;
+   font-size: 14px;
+}
+
+.messages-table th,
+.messages-table td {
+   padding: 14px 16px;
+   text-align: left;
+   vertical-align: top;
+   color: #FFFFFF;
+}
+
+.messages-table thead th {
+   background-color: #2D3951;
+   color: #FFE607;
+   font-weight: 500;
+   text-transform: uppercase;
+   letter-spacing: 1px;
+   font-size: 12px;
+}
+
+.messages-table tbody tr {
+   border-top: 1px solid #3A4357;
+}
+
+.messages-table tbody tr:nth-child(even) {
+   background-color: rgba(45, 57, 81, 0.3);
+}
+
+.messages-table tbody tr:hover {
+   background-color: rgba(255, 230, 7, 0.06);
+}
+
+.messages-table a {
+   color: #FFE607;
+   word-break: break-all;
+}
+
+.messages-table .msg-cell {
+   min-width: 260px;
+   max-width: 480px;
+   white-space: normal;
+   overflow-wrap: anywhere;
+}
+
+.messages-table .date-cell {
+   white-space: nowrap;
+   color: #C7C7C7;
+}
 
 
  /* RESPONSIVE DESIGN */
@@ -808,16 +1133,6 @@ nav ul li a:hover {
   .send-message form {
     width: 95%;
   }
-
-  .your-name,
-  .your-email {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .send-message form input {
-    width: 100%;
-  }
 }
 
 
@@ -873,5 +1188,90 @@ nav ul li a:hover {
   .prev,
   .next {
     display: none;
+  }
+}
+
+
+/* Responsive: contact + admin pages */
+@media (max-width: 1024px) {
+  .send-message,
+  .contact-socials {
+    width: 90%;
+  }
+
+  .send-message form {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .send-message,
+  .contact-socials {
+    width: 95%;
+  }
+
+  .admin-section {
+    padding: 50px 16px;
+  }
+
+  .dashboard-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Table becomes stacked cards on phones */
+  .table-wrap {
+    border: none;
+    overflow: visible;
+  }
+
+  .messages-table thead {
+    display: none;
+  }
+
+  .messages-table,
+  .messages-table tbody,
+  .messages-table tr,
+  .messages-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .messages-table tbody tr {
+    border: 1px solid #3A4357;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 8px 0;
+    background-color: rgba(45, 57, 81, 0.3);
+  }
+
+  .messages-table td {
+    padding: 6px 16px;
+  }
+
+  .messages-table td::before {
+    content: attr(data-label);
+    display: block;
+    color: #FFE607;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+  }
+
+  .messages-table .msg-cell {
+    min-width: 0;
+    max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .send-message form,
+  .admin-card {
+    padding: 20px 16px;
+  }
+
+  .send-message form .btn-gold {
+    align-self: stretch;
   }
 }
